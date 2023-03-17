@@ -16,11 +16,11 @@ public class SwaggerConfiguration {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-            .select()
-            .apis(RequestHandlerSelectors.basePackage( "com.vngrs.clinic"))
-            .paths(PathSelectors.any())
-            .build()
-            .tags(new Tag(SMS_TAG, "the sms API with description api tag"));
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.vngrs.clinic"))
+                .paths(PathSelectors.any())
+                .build()
+                .tags(new Tag(SMS_TAG, "the sms API with description api tag"));
     }
 
 }

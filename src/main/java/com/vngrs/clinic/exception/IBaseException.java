@@ -13,11 +13,11 @@ import com.vngrs.clinic.exception.unauthorized.UnauthorizedException;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = BadRequestException.class, name = BadRequestException.TYPE_NAME),
-    @JsonSubTypes.Type(value = InternalServerException.class, name = InternalServerException.TYPE_NAME),
-    @JsonSubTypes.Type(value = UnauthorizedException.class, name = UnauthorizedException.TYPE_NAME),
-    @JsonSubTypes.Type(value = NotFoundException.class, name = NotFoundException.TYPE_NAME),
-    @JsonSubTypes.Type(value = ForbiddenException.class, name = ForbiddenException.TYPE_NAME)
+        @JsonSubTypes.Type(value = BadRequestException.class, name = BadRequestException.TYPE_NAME),
+        @JsonSubTypes.Type(value = InternalServerException.class, name = InternalServerException.TYPE_NAME),
+        @JsonSubTypes.Type(value = UnauthorizedException.class, name = UnauthorizedException.TYPE_NAME),
+        @JsonSubTypes.Type(value = NotFoundException.class, name = NotFoundException.TYPE_NAME),
+        @JsonSubTypes.Type(value = ForbiddenException.class, name = ForbiddenException.TYPE_NAME)
 
 })
 public interface IBaseException {

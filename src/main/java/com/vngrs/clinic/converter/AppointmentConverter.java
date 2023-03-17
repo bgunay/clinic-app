@@ -6,7 +6,7 @@ import com.vngrs.clinic.model.Appointment;
 
 public class AppointmentConverter {
 
-    public static AppointmentResponseDto convert(Appointment appointment){
+    public static AppointmentResponseDto convert(Appointment appointment) {
         AppointmentResponseDto appointmentResponseDto = new AppointmentResponseDto();
         appointmentResponseDto.setId(appointment.getId());
         appointmentResponseDto.setStartDate(appointment.getStartDate());

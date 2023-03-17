@@ -91,18 +91,18 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleBindException(
-        BindException bindException,
-        HttpHeaders httpHeaders,
-        HttpStatus httpStatus,
-        WebRequest webRequest
+            BindException bindException,
+            HttpHeaders httpHeaders,
+            HttpStatus httpStatus,
+            WebRequest webRequest
     ) {
         List<ObjectError> errors = bindException.getAllErrors();
 
         List<BadRequestErrorDto> errorDtoList = errors
-            .stream()
-            .map(this::getDtoFromError)
-            .sorted(Comparator.comparing(BadRequestErrorDto::getReason))
-            .collect(Collectors.toList());
+                .stream()
+                .map(this::getDtoFromError)
+                .sorted(Comparator.comparing(BadRequestErrorDto::getReason))
+                .collect(Collectors.toList());
 
         return new ResponseEntity<>(errorDtoList, httpHeaders, httpStatus);
     }

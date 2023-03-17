@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "patients")
-public class Patient extends BaseEntity{
+public class Patient extends BaseEntity {
 
     @NotNull
     @Column(name = "name")

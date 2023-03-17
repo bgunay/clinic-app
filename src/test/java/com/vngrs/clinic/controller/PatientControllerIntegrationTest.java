@@ -1,8 +1,6 @@
 package com.vngrs.clinic.controller;
 
 import com.vngrs.clinic.dto.response.PatientResponseDto;
-import com.vngrs.clinic.model.Patient;
-import com.vngrs.clinic.service.PatientService;
 import com.vngrs.clinic.service.PatientService;
 import com.vngrs.clinic.util.JsonUtil;
 import org.hamcrest.Matchers;
@@ -16,9 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.math.BigDecimal;
-import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -40,7 +35,6 @@ class PatientControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
-
 
 
     @Test

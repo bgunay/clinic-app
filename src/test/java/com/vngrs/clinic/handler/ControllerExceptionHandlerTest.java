@@ -16,7 +16,7 @@ import org.springframework.validation.ObjectError;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 public class ControllerExceptionHandlerTest {
@@ -41,8 +41,8 @@ public class ControllerExceptionHandlerTest {
 
     @Test
     public void testProcessBadRequestException() {
-        List<BadRequestErrorDto> errors = Collections.singletonList(new BadRequestErrorDto(MessageType.VALIDATION, VALIDATION_ERROR_MESSAGE,"fieldName"));
-        BadRequestException exception = new BadRequestException("Bad request exception message",errors);
+        List<BadRequestErrorDto> errors = Collections.singletonList(new BadRequestErrorDto(MessageType.VALIDATION, VALIDATION_ERROR_MESSAGE, "fieldName"));
+        BadRequestException exception = new BadRequestException("Bad request exception message", errors);
 
         BadRequestException result = controllerExceptionHandler.processBadRequestException(exception);
 

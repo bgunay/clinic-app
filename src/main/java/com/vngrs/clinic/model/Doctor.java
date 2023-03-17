@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "doctors")
-public class Doctor extends BaseEntity{
+public class Doctor extends BaseEntity {
 
     @NotNull
     @Column(name = "name")

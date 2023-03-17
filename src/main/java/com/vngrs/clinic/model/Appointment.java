@@ -4,7 +4,6 @@ import com.vngrs.clinic.dto.enumeration.AppointmentStatus;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
