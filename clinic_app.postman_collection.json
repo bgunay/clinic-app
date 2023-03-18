@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "41b04cb1-453f-4a14-9c6d-f0f79406de24",
+		"name": "clinic_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25419549"
+	},
+	"item": [
+		{
+			"name": "create-doctor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"burham\",\r\n    \"surname\": \"gunay\",\r\n    \"perHourFee\": 50.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/doctor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Burhan\",\r\n    \"surname\": \"Gunay\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/patient",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-appointment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"doctorId\": 83,\r\n    \"patientId\": 85,\r\n    \"startDate\": \"2024-06-03 00:00:00\",\r\n    \"endDate\": \"2024-06-03 00:10:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/appointment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel-appointment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "userId",
+						"value": "85",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/appointment/9/cancel",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointment",
+						"9",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-doctors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/doctor/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctor",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDoctorById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "doctorId",
+						"value": "84",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/doctor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctor"
+					],
+					"query": [
+						{
+							"key": "asdsa",
+							"value": "sadas",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPatientById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "patientId",
+						"value": "84",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/patient",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"patient"
+					],
+					"query": [
+						{
+							"key": "asdsa",
+							"value": "sadas",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-patients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/doctor/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctor",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-doctor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"perHourFee\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/doctor/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctor",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
