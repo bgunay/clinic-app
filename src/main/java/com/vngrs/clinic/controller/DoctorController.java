@@ -8,12 +8,12 @@ import com.vngrs.clinic.exception.forbidden.ForbiddenException;
 import com.vngrs.clinic.exception.notfound.NotFoundException;
 import com.vngrs.clinic.exception.unauthorized.UnauthorizedException;
 import com.vngrs.clinic.service.DoctorService;
+import com.vngrs.clinic.service.impl.DoctorServiceImpl;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -45,7 +45,7 @@ public class DoctorController {
             @ApiResponse(code = 403, message = "Doctor not allowed", response = ForbiddenException.class),
             @ApiResponse(code = 404, message = "Doctor not found", response = NotFoundException.class)
     })
-    public ResponseEntity<DoctorResponseDto> getDoctor(@ApiParam(value = "doctorId", required = true)  @RequestHeader("doctorId") Long doctorId) throws NotFoundException {
+    public ResponseEntity<DoctorResponseDto> getDoctor(@ApiParam(value = "doctorId", required = true) @RequestHeader("doctorId") Long doctorId) throws NotFoundException {
         DoctorResponseDto dtoResponseDto = doctorService.getDoctorById(doctorId);
         return ResponseEntity.ok(dtoResponseDto);
     }

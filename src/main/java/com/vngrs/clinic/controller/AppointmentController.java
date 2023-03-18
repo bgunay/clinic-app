@@ -8,6 +8,7 @@ import com.vngrs.clinic.exception.forbidden.ForbiddenException;
 import com.vngrs.clinic.exception.notfound.NotFoundException;
 import com.vngrs.clinic.exception.unauthorized.UnauthorizedException;
 import com.vngrs.clinic.service.AppointmentService;
+import com.vngrs.clinic.service.impl.AppointmentServiceImpl;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

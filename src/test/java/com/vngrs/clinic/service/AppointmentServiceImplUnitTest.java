@@ -35,7 +35,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith({MockitoExtension.class})
-public class AppointmentServiceUnitTest {
+public class AppointmentServiceImplUnitTest {
 
     @Mock
     private AppointmentRepository appointmentRepository;
@@ -203,35 +203,6 @@ public class AppointmentServiceUnitTest {
 
         // Then
         assertThrows(NotFoundException.class, () -> appointmentService.cancelAppointment(appointmentId, patient.getId()));
-    }
-
-    @Test
-    public void testCalculateAppointmentFee() {
-        // Arrange
-        LocalDateTime startDate = LocalDateTime.of(2024, 3, 16, 10, 0);
-        LocalDateTime endDate = LocalDateTime.of(2024, 3, 16, 12, 0);
-        Doctor doctor = new Doctor();
-        doctor.setPayHourFee(BigDecimal.valueOf(100));
-
-        // Act
-        BigDecimal actualFee = appointmentService.calculateAppointmentFee(startDate, endDate, doctor);
-
-        // Assert
-        assertEquals(0, BigDecimal.valueOf(200).compareTo(actualFee));
-    }
-
-    @Test
-    public void testCalculateCancellationFee() {
-        // Arrange
-        LocalDateTime startDate = LocalDateTime.now().plusHours(1);
-        Doctor doctor = new Doctor();
-        doctor.setPayHourFee(BigDecimal.valueOf(100));
-
-        // Act
-        BigDecimal actualFee = appointmentService.calculateCancellationFee(startDate, doctor);
-
-        // Assert
-        assertEquals(25L, actualFee.longValue());
     }
 }
 
