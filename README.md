@@ -13,6 +13,8 @@ Clinic APP
 * Run the application with 'mvn spring-boot:run' or with the IDE
 * For simplicity, the application is not secured, and not all cases are covered in tests.
 * Steps:
+     * in the root folder, run <code>docker-compose up</code>
+     * in the root folder, run <code>mvn clean install</code>
      * Run the application
      * Create a new Doctor
      * Create a new Patient

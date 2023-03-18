@@ -9,9 +9,11 @@ import com.vngrs.clinic.exception.notfound.NotFoundException;
 import com.vngrs.clinic.exception.unauthorized.UnauthorizedException;
 import com.vngrs.clinic.service.DoctorService;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +22,7 @@ import java.util.List;
 @RestController
 @Api(value = DoctorController.ENDPOINT, tags = {SwaggerConfiguration.SMS_TAG})
 @RequestMapping(value = DoctorController.ENDPOINT)
+@Slf4j
 public class DoctorController {
 
     static final String ENDPOINT = "/doctor";
@@ -30,7 +33,7 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     @ApiOperation(
             value = "For getting doctor",
             nickname = "get doctor",
@@ -42,7 +45,7 @@ public class DoctorController {
             @ApiResponse(code = 403, message = "Doctor not allowed", response = ForbiddenException.class),
             @ApiResponse(code = 404, message = "Doctor not found", response = NotFoundException.class)
     })
-    public ResponseEntity<DoctorResponseDto> getDoctor(@ApiParam(value = "doctorId", required = true) @RequestHeader("doctorId") Long doctorId) throws NotFoundException {
+    public ResponseEntity<DoctorResponseDto> getDoctor(@ApiParam(value = "doctorId", required = true)  @RequestHeader("doctorId") Long doctorId) throws NotFoundException {
         DoctorResponseDto dtoResponseDto = doctorService.getDoctorById(doctorId);
         return ResponseEntity.ok(dtoResponseDto);
     }
@@ -61,7 +64,7 @@ public class DoctorController {
     })
     public ResponseEntity<DoctorResponseDto> createDoctor(@Valid @RequestBody DoctorRequestDto doctorRequestDto) {
         DoctorResponseDto doctorResponseDto = doctorService.createDoctor(doctorRequestDto);
-        return new ResponseEntity<DoctorResponseDto>(doctorResponseDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(doctorResponseDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -73,7 +76,7 @@ public class DoctorController {
     })
     public ResponseEntity<DoctorResponseDto> updateDoctor(@PathVariable Long id, @Valid @RequestBody UpdateDoctorFeeDto updateDoctorFeeDto) throws NotFoundException {
         DoctorResponseDto doctorResponseDto = doctorService.updateDoctor(id, updateDoctorFeeDto);
-        return new ResponseEntity<DoctorResponseDto>(doctorResponseDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(doctorResponseDto, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

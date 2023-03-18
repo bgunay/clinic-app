@@ -180,12 +180,11 @@ public class AppointmentServiceUnitTest {
         doctor.setPayHourFee(BigDecimal.valueOf(100));
         appointment.setDoctor(doctor);
         appointment.setPatient(patient);
-        BigDecimal cancellationFee = BigDecimal.valueOf(25);
-        when(appointmentRepository.findById(appointmentId)).thenReturn(Optional.of(appointment));
+        when(appointmentRepository.findByIdAndPatient_Id(appointmentId, patient.getId())).thenReturn(Optional.of(appointment));
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
 
         // When
-        AppointmentResponseDto appointmentResponseDto = appointmentService.cancelAppointment(appointmentId);
+        AppointmentResponseDto appointmentResponseDto = appointmentService.cancelAppointment(appointmentId, patient.getId());
 
         // Then
         assertEquals(appointment.getId(), appointmentResponseDto.getId());
@@ -200,10 +199,10 @@ public class AppointmentServiceUnitTest {
     public void testCancelAppointmentNotFound() {
         // Given
         Long appointmentId = 1L;
-        when(appointmentRepository.findById(appointmentId)).thenReturn(Optional.empty());
+        when(appointmentRepository.findByIdAndPatient_Id(appointmentId, patient.getId())).thenReturn(Optional.empty());
 
         // Then
-        assertThrows(NotFoundException.class, () -> appointmentService.cancelAppointment(appointmentId));
+        assertThrows(NotFoundException.class, () -> appointmentService.cancelAppointment(appointmentId, patient.getId()));
     }
 
     @Test

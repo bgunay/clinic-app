@@ -42,7 +42,7 @@ public class PatientController {
         return ResponseEntity.status(HttpStatus.CREATED).body(patient);
     }
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     @ApiOperation(
             value = "For getting Patient",
             nickname = "get Patient",

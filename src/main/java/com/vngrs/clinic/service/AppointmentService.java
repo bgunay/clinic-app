@@ -44,8 +44,8 @@ public class AppointmentService {
         return appointmentResponseDtoList;
     }
 
-    public AppointmentResponseDto cancelAppointment(Long appointmentId) throws NotFoundException, ForbiddenException {
-        Appointment appointment = appointmentRepository.findById(appointmentId).orElseThrow(() -> new NotFoundException("Appointment not found"));
+    public AppointmentResponseDto cancelAppointment(Long appointmentId, Long userId) throws NotFoundException, ForbiddenException {
+        Appointment appointment = appointmentRepository.findByIdAndPatient_Id(appointmentId, userId).orElseThrow(() -> new NotFoundException("Appointment not found"));
         if (appointment.getStatus() == AppointmentStatus.CANCELLED || appointment.getStatus() == AppointmentStatus.DONE) {
             throw new ForbiddenException("Appointment can not be cancelled");
         }

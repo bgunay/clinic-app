@@ -62,8 +62,10 @@ public class AppointmentController {
             @ApiResponse(code = 403, message = "Forbidden", response = ForbiddenException.class),
             @ApiResponse(code = 404, message = "Not Found", response = NotFoundException.class)})
     @PostMapping("/{appointmentId}/cancel")
-    public ResponseEntity<AppointmentResponseDto> cancelAppointment(@PathVariable Long appointmentId) throws com.vngrs.clinic.exception.notfound.NotFoundException, ForbiddenException {
-        AppointmentResponseDto response = appointmentService.cancelAppointment(appointmentId);
+    public ResponseEntity<AppointmentResponseDto> cancelAppointment(@PathVariable Long appointmentId,
+                                                                    @ApiParam(value = "userId", required = true) @RequestHeader Long userId)
+            throws com.vngrs.clinic.exception.notfound.NotFoundException, ForbiddenException {
+        AppointmentResponseDto response = appointmentService.cancelAppointment(appointmentId, userId);
         return ResponseEntity.ok(response);
     }
 }
