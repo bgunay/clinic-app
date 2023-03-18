@@ -15,6 +15,7 @@ import com.vngrs.clinic.model.Patient;
 import com.vngrs.clinic.repository.AppointmentRepository;
 import com.vngrs.clinic.repository.DoctorRepository;
 import com.vngrs.clinic.repository.PatientRepository;
+import com.vngrs.clinic.service.impl.AppointmentServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith({MockitoExtension.class})
-public class AppointmentServiceImplUnitTest {
+public class AppointmentServiceUnitTest {
 
     @Mock
     private AppointmentRepository appointmentRepository;
@@ -47,7 +48,7 @@ public class AppointmentServiceImplUnitTest {
     private PatientRepository patientRepository;
 
     @InjectMocks
-    private AppointmentService appointmentService;
+    private AppointmentServiceImpl appointmentService;
 
     private Appointment appointment;
     private Doctor doctor;
